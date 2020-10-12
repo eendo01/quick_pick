@@ -14,7 +14,8 @@
             document.write("The quick pick numbers are:");
             print_nums(nums);
 
-            var winning_nums = prompt("Enter winning numbers separated by a space","28 30 31 42 43");
+            var winning_nums = prompt("Enter winning numbers separated by a space",
+                                      "28 30 31 42 43").split(" ");
             winning_nums[5] = prompt("Enter lucky number","13"); 
             document.write("The winning numbers are:");
             print_nums(winning_nums);
