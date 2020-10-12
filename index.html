@@ -5,6 +5,10 @@
     </head>
     <body>
         <script language="javascript">
+            var winning_nums = prompt("Enter winning numbers separated by a space",
+                                      "28 30 31 42 43").split(" ");
+            winning_nums[5] = prompt("Enter lucky number","13"); 
+
             var nums = [];
             for (i=0; i<5; i++) {
                 nums[i] = Math.floor(Math.random() * 47 + 1);
@@ -13,10 +17,6 @@
             nums.sort();
             document.write("The quick pick numbers are:");
             print_nums(nums);
-
-            var winning_nums = prompt("Enter winning numbers separated by a space",
-                                      "28 30 31 42 43").split(" ");
-            winning_nums[5] = prompt("Enter lucky number","13"); 
             document.write("The winning numbers are:");
             print_nums(winning_nums);
             calculate_winnings(nums, winning_nums);
@@ -30,7 +30,8 @@
                         count++;
                     }
                 }
-                var winnings;
+
+                var winnings = "";
                 if ((count == 0) && lucky_ball(nums, winning_nums)) {
                     winnings = "$4";
                 } else if((count == 1) && lucky_ball(nums, winning_nums)) {
@@ -52,7 +53,7 @@
                 } else if((count == 5) && lucky_ball(nums, winning_nums)) {
                     winnings = "$7,000 a WEEK for LIFE";
                 }
-                if ((count == 0) && (!lucky_ball(nums, winning_nums))) {
+                if (winnings == "") {
                     document.write("Sorry, you did not win.<br>");
                 } else {
                     document.write("You win! Your payout is: ",winnings);
@@ -61,8 +62,8 @@
 
             function match(x, wn)
             {
-                for (i=0; i<5; i++) {
-                    if (wn[i] == x){
+                for (j=0; j<5; j++) {
+                    if (wn[j] == x){
                         return true;
                     }
                 }
