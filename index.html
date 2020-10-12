@@ -5,45 +5,84 @@
     </head>
     <body>
         <script language="javascript">
-            // user_nums creates and prints array of user numbers
-            function user_nums()
-            {
-                var nums = [];
-                for (i=0; i<5; i++) {
-                    nums[i] = Math.floor(Math.random() * 47 + 1);
-                }
-                nums[5] = Math.floor(Math.random() * 17 + 1);
-                nums.sort();
-                document.write("The quick pick numbers are:");
-                print_nums(nums);
-
+            var nums = [];
+            for (i=0; i<5; i++) {
+                nums[i] = Math.floor(Math.random() * 47 + 1);
             }
+            nums[5] = Math.floor(Math.random() * 17 + 1);
+            nums.sort();
+            document.write("The quick pick numbers are:");
+            print_nums(nums);
 
-            // winning_nums 
-            function winning_nums()
+            var winning_nums = prompt("Enter winning numbers separated by a space","28 30 31 42 43");
+            winning_nums[5] = prompt("Enter lucky number","13");   
+            calculate_winnings(nums, winning_nums);
+
+            // calculate_winnings calculates winnings
+            function calculate_winnings(nums, winning_nums)
             {
-                var winning_nums = prompt("Enter winning numbers separated by a space","28 30 31 42 43");
-                winning_nums[5] = prompt("Enter lucky number","13");
-
+                var count = 0;
                 for (i=0; i<5; i++) {
-                    for (j=0; j<6; j++) {
-
+                    if (match?(nums, winning_nums)) {
+                        count++;
                     }
                 }
+                var winnings;
+                if ((count == 0) && lucky_ball?(nums, winning_nums)) {
+                    winnings = "$4";
+                } else if((count == 1) && lucky_ball?(nums, winning_nums)) {
+                    winnings = "$6";
+                } else if((count == 2) && !lucky_ball?(nums, winning_nums)) {
+                    winnings = "$3";
+                } else if((count == 2) && lucky_ball?(nums, winning_nums)) {
+                    winnings = "$25";
+                } else if((count == 3) && !lucky_ball?(nums, winning_nums)) {
+                    winnings = "$20";
+                } else if((count == 3) && lucky_ball?(nums, winning_nums)) {
+                    winnings = "$150";
+                } else if((count == 4) && !lucky_ball?(nums, winning_nums)) {
+                    winnings = "$200";
+                } else if((count == 4) && lucky_ball?(nums, winning_nums)) {
+                    winnings = "$5,000";
+                } else if((count == 5) && !lucky_ball?(nums, winning_nums)) {
+                    winnings = "$25,000 a YEAR for LIFE";
+                } else if((count == 5) && lucky_ball?(nums, winning_nums)) {
+                    winnings = "$7,000 a WEEK for LIFE";
+                }
+                if ((count == 0) && (!lucky_ball?(nums, winning_nums)) {
+                    document.write("Sorry, you did not win.<br>");
+                } else {
+                    document.write("You win! Your payout is: ",winnings);
+                }
+            }
+
+            function match?(x, wn)
+            {
+                for (i=0; i<5; i++) {
+                    if (wn[i] == x){
+                        return true;
+                    }
+                }
+                return false;
             }
 
             // print_nums prints the numbers of a 6 elt array
             function print_nums (n)
             {
-                for (i=0; i<6; i++) {
+                for (i=0; i<5; i++) {
                     document.write(" ",n[i]);
                 }
                 document.write("<br>");
                 document.write("The lucky ball number is: ", n[5],"<br>");
             }
 
-            user_nums();
-            winning_nums();
+            // lucky_ball? assesses whether the lucky ball matches
+            function lucky_ball?(n, wn)
+            {
+                return (n[5] == wn[5]);
+            }
+
+            
         </script>
     </body>
 </html>
