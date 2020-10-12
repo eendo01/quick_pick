@@ -16,6 +16,7 @@
                 nums.sort();
                 document.write("The quick pick numbers are:");
                 print_nums(nums);
+
             }
 
             // winning_nums 
@@ -24,19 +25,21 @@
                 var winning_nums = prompt("Enter winning numbers separated by a space","28 30 31 42 43");
                 winning_nums[5] = prompt("Enter lucky number","13");
 
-                for (i=0; i<6; i++) {
+                for (i=0; i<5; i++) {
                     for (j=0; j<6; j++) {
 
                     }
                 }
             }
 
+            // print_nums prints the numbers of a 6 elt array
             function print_nums (n)
             {
                 for (i=0; i<6; i++) {
                     document.write(" ",n[i]);
                 }
                 document.write("<br>");
+                document.write("The lucky ball number is: ", n[5],"<br>");
             }
 
             user_nums();
