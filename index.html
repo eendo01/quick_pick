@@ -5,17 +5,41 @@
     </head>
     <body>
         <script language="javascript">
-            var nums = [];
-            for (i=0; i<5; i++) {
-                nums[i] = Math.floor(Math.random() * 47 + 1);
+            // user_nums creates and prints array of user numbers
+            function user_nums()
+            {
+                var nums = [];
+                for (i=0; i<5; i++) {
+                    nums[i] = Math.floor(Math.random() * 47 + 1);
+                }
+                nums[5] = Math.floor(Math.random() * 17 + 1);
+                nums.sort();
+                document.write("The quick pick numbers are:");
+                print_nums(nums);
             }
-            nums[5] = Math.floor(Math.random() * 17 + 1);
-            nums.sort();
-            document.write("The quick pick numbers are:");
-            for (i=0; i<6; i++) {
-                document.write(" ",nums[i]);
+
+            // winning_nums 
+            function winning_nums()
+            {
+                var winning_nums = prompt("Enter winning numbers separated by a space","28 30 31 42 43");
+                winning_nums[5] = prompt("Enter lucky number","13");
+
+                for (i=0; i<6; i++) {
+                    for (j=0; j<6; j++) {
+
+                    }
+                }
             }
-            document.write("<br>");
+
+            function print_nums (n)
+            {
+                for (i=0; i<6; i++) {
+                    document.write(" ",n[i]);
+                }
+                document.write("<br>");
+            }
+
+            user_nums();
         </script>
     </body>
 </html>
