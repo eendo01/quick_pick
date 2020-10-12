@@ -5,11 +5,11 @@
     </head>
     <body>
         <script language="javascript">
-            var nums = newArray(6);
+            var nums = [];
             for (i=0; i<5; i++) {
-                nums[i] = Math.random() * 47 + 1;
+                nums[i] = Math.floor(Math.random() * 47 + 1);
             }
-            nums[5] = Math.random() * 17 + 1;
+            nums[5] = Math.floor(Math.random() * 17 + 1);
             nums.sort();
             document.write("The quick pick numbers are:");
             for (i=0; i<6; i++) {
