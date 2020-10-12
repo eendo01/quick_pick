@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quick Pick</title>
+    </head>
+    <body>
+        <script language="javascript">
+            var nums = newArray(6);
+            for (i=0; i<5; i++) {
+                nums[i] = Math.random() * 47 + 1;
+            }
+            nums[5] = Math.random() * 17 + 1;
+            nums.sort();
+            document.write("The quick pick numbers are:");
+            for (i=0; i<6; i++) {
+                document.write(" ",nums[i]);
+            }
+            document.write("<br>");
+        </script>
+    </body>
+</html>
